@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std ;
+
+int mostRepeatedCharFrequency(string str){
+	if (str.length() == 0){
+		return 0 ;
+	}
+	int maxFrequency = 0 ;
+//	Decalaring a map
+
+	map < char , int > charFrequencyMap ;
+	for (int itr = 0 ; itr < str.length() ; itr++){
+		char ch = str[itr];
+		if (charFrequencyMap.find(ch) == charFrequencyMap.end()){
+			charFrequencyMap[ch] = 1 ;
+		}else {
+			charFrequencyMap[ch]++ ; 
+		}
+	}
+	
+//	Printing the frqeuency of characters in the string 
+
+	map < char , int > :: iterator itr ;
+	for (itr = charFrequencyMap.begin() ; itr != charFrequencyMap.end() ; itr++){
+		if (itr->second > maxFrequency){
+			maxFrequency = itr->second ; 
+		}	
+	}
+	return maxFrequency;
+	
+}
+int main (){
+
+	string str = "ATTCGGGAAAA";
+	int mostRepeatedNumber = mostRepeatedCharFrequency(str);
+	cout<<"Frequency of most repeated character in the given string is  : "<<mostRepeatedNumber<<endl;
+	return 0 ;
+
+}
