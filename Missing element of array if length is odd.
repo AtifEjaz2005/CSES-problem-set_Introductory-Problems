@@ -1,0 +1,37 @@
+#include <iostream>
+#include <algorithm>
+using namespace std ;
+
+int main (){
+	
+	int missingChar = 1 ;
+	int length ;
+	cout<<"Enter length of array : ";
+	cin>>length;
+	cout<<length<<endl;
+	
+	int arr[length] ;
+	
+	for (int counter = 0 ; counter < length - 1 ; counter++){
+		cout<<"Enter element of array for index "<<counter<<" : ";
+		cin>>arr[counter];
+	}
+	
+	cout<<endl;
+	
+	sort(arr , arr + length);
+	for (int itr = 0 ; itr < length - 1 ; itr++){
+		cout<<"Element on the "<<itr<<" index of sorted arr is : "<<arr[itr]<<endl;
+	}
+	
+	for (int itr = 0 ; itr < length - 1 ; itr++){
+		if (arr[itr] == missingChar){
+			missingChar++; 
+		}else{
+			cout<<"Missing Character is "<<missingChar<<" .";
+			break;
+		}
+	}		
+	return 0 ;
+
+}
